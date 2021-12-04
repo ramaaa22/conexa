@@ -7,7 +7,6 @@ module.exports = {
     getAll: async (req,res) => {
         try {
             const page = req.query.page || 1 ;
-            console.log(page)
             const photos = await photosService.getAll(page);
             res.status(codeStatus.RESPONSE_OK).json({
                 photos

@@ -1,12 +1,12 @@
 const axios = require('axios').default;
 const codeStatus = require('../constants/constants');
 const messages = require('../constants/messages');
+const postsService = require('../services/posts-service');
 
 module.exports = {
     getAll: async (req,res) => {
         try {
-            const response = await axios.get('https://jsonplaceholder.typicode.com/posts');
-            const {data:posts} = response
+            const posts = await postsService.getAll();
             res.status(codeStatus.RESPONSE_OK).json({
                 posts
             })

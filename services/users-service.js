@@ -8,20 +8,12 @@ module.exports={
     login: async (req,res) =>{
         try {
             const {email, password} = req.body;
-            //const user = await usersRepository.existsUser(email);
-            const user ={
-                email,
-                password:'123456'
-            }
-            console.log(user)
+            const user = await usersRepository.existsUser(email);
             if (!user){
-                res.status(codeStatus.NOT_FOUND_ERROR).json({
-                    ok: false,
-                  });
+                res.status(codeStatus.NOT_FOUND_ERROR).json(messages.NOT_FOUND_ERROR);
             }
             else {
-                //const success = bcrypt.compareSync(password, user.password);
-                const success= true;
+                const success = bcrypt.compareSync(password, process.env.USER_PASSWORD);
                 if (success) {
                     const token = await generateJwt(user);
                     res.status(codeStatus.RESPONSE_OK).json({
