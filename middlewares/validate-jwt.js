@@ -5,12 +5,10 @@ const { secretKey } = require('../config/config').JWT;
 
 const validateJwt = (req, res, next) => {
   let token = req.header('Authorization');
-  console.log(token);
   if (token) {
     try {
       token = (token.split('Bearer '))[1];
       const { user } = jwt.verify(token, secretKey);
-      console.log(user);
       req.user = user;
       next();
     } catch (error) {
