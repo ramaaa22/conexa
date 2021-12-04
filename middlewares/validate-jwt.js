@@ -1,0 +1,29 @@
+const constants = require('../constants/constants');
+const messages = require('../constants/messages');
+const jwt = require('jsonwebtoken');
+const { secretKey } = require('../config/config').JWT;
+
+const validateJwt = (req, res, next) => {
+  let token = req.header('Authorization');
+  console.log(token);
+  if (token) {
+    try {
+      token = (token.split('Bearer '))[1];
+      const { user } = jwt.verify(token, secretKey);
+      console.log(user);
+      req.user = user;
+      next();
+    } catch (error) {
+      res.status(constants.NOK_USER_CREDENTIALS).json({
+        error,
+        msg: messages.INVALID_TOKEN
+      });
+    }
+  } else {
+    res.status(constants.BAD_REQUEST_ERROR).json({
+      msg: messages.NO_TOKEN
+    });
+  }
+};
+
+module.exports = validateJwt;
