@@ -18,5 +18,8 @@ Abriendo el proyecto, y parados en la carpeta backend, si se ejecuta "npm test",
 
 Me focalicé en lo que es el backend tal cual hablé con Joaquín. EL frontend está comenzado pero prefiero enviar esta parte antes por una cuestión de enviar lo antes posible la parte que me había comprometido.
 
+De todos modos, en el siguiente repositorio, se encuentra la parte del front:
+https://github.com/ramaaa22/conexa-front
+
 Cualquier duda, a disposición!
 
