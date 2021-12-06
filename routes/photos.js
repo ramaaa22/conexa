@@ -4,7 +4,6 @@ let photosController = require('../controllers/photos-controller');
 const validateJWT = require('../middlewares/validate-jwt');
 
 
-/* GET users listing. */
 router.get('/',validateJWT, photosController.getAll);
 
 

@@ -3,9 +3,9 @@ const validateFields = require('../middlewares/validate-fields');
 
 module.exports = {
   loginValidate: [
-    check('email', 'email is required').notEmpty(),
-    check('email','must be a valid email').isEmail(),
-    check('password', 'password is required').notEmpty(),
+    check('email', 'Email is required').notEmpty(),
+    check('email','Must be a valid email').isEmail(),
+    check('password', 'Password is required').notEmpty(),
     validateFields
   ],
 };
