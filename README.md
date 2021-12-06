@@ -1,6 +1,7 @@
 Hola a todos! Es un gusto para mí compartirles la resolución del ejercicio propuesto.
 
 Sitio de la API: https://back-conexa.herokuapp.com/
+Sitio del repositorio: https://github.com/ramaaa22/conexa
 
 En el archivo Conexa.postman_collection.json se encuentran los endpoints solicitados.
 Tanto para obtener los posts como las photos, es necesario validarse y es necesario el token.
