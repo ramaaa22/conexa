@@ -7,7 +7,7 @@ chai.use(chaiHttp);
 
 const url = 'https://back-conexa.herokuapp.com';
 let token;
-describe('Get token to authorizate operations with POSTS ', () => {
+describe('Get token to authorizate operations with PHOTOS ', () => {
   it('Should get a token', (done) => {
     chai.request(url)
       .post('/users/login')
@@ -22,14 +22,14 @@ describe('Get token to authorizate operations with POSTS ', () => {
 
 })
 
-describe('GET POSTS ', () => {
-    it('Should receive all the posts', (done) => {
+describe('GET PHOTOS ', () => {
+    it('Should receive all the photos', (done) => {
       chai.request(url)
-        .get('/posts')
+        .get('/photos')
         .set({ 'Authorization': `Bearer ${token}` })
         .end((error, res) => {
           expect(res).to.have.status(200);
-          expect(res.body.posts).to.be.an('array')
+          expect(res.body.photos).to.be.an('array')
           done();
         });
     });

@@ -6,8 +6,9 @@ const expect = require('chai').expect;
 chai.use(chaiHttp);
 
 const url = 'https://back-conexa.herokuapp.com';
+
 let token;
-describe('Get token to authorizate operations with POSTS ', () => {
+describe('Get token ', () => {
   it('Should get a token', (done) => {
     chai.request(url)
       .post('/users/login')
@@ -19,20 +20,14 @@ describe('Get token to authorizate operations with POSTS ', () => {
         done();
       });
   });
+  it('Show an error because user doesnt exist', (done) => {
+    chai.request(url)
+      .post('/users/login')
+      .send({ email: 'ramiro.boza@gmail.com', password: '123456' })
+      .end((error, res) => {
+        expect(res).to.have.status(404);
+        done();
+      });
+  });
 
 })
-
-describe('GET POSTS ', () => {
-    it('Should receive all the posts', (done) => {
-      chai.request(url)
-        .get('/posts')
-        .set({ 'Authorization': `Bearer ${token}` })
-        .end((error, res) => {
-          expect(res).to.have.status(200);
-          expect(res.body.posts).to.be.an('array')
-          done();
-        });
-    });
-    
-    
-  });
